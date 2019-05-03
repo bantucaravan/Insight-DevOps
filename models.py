@@ -2,6 +2,8 @@ from database import Base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.types import DateTime
 
+#import TEST
+
 class Items(Base):
     """
     Items table

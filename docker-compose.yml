@@ -20,16 +20,18 @@ services:
     depends_on:
       - db
   nginx:
-    #image: "nginx:1.13.5"
-    image: "nginx:latest"
+    image: "nginx:1.13.5"
+    #image: "nginx:latest"
     ports:
       - "8080:80"
     volumes:
       #- ./conf.d:/etc/nginx/conf.d
-      #- ./conf.d/flaskapp.conf:/etc/nginx/nginx.conf
-      - ./conf.d:/etc/nginx/
+      #- ./conf.d/flaskapp.conf:/etc/nginx/nginx.conf:ro
+      #- ./conf.d:/random/path # nginx initiated in this case
+      #- ./conf.d:/etc/nginx/
+      - ./conf.d:/etc/nginx/conf.d # this works!!!
       - ./templates:/usr/share/nginx/html
-    command: [nginx-debug, '-g', 'daemon off;']
+    #command: [nginx-debug, '-g', 'daemon off;']
     networks:
       - web_network
     depends_on: 
