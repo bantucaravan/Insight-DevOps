@@ -1,6 +1,6 @@
 ## Insight DevOps Engineering Systems Puzzle Submission
 
-See [this doc](/Original Instructions.md) for rules and instructions
+See [this doc](</Original Instructions.md>) for rules and instructions
 
 I partially completed the puzzle.
 
@@ -18,4 +18,3 @@ Here are some things I did:
 Next up:
 
 Figure out why a successfull form submission redirects to `<http://localhost%2Clocalhost:8080/success>` instead of `<http://localhost:8080/success>` 
-
