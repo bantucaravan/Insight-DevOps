@@ -6,11 +6,14 @@ from sqlalchemy.ext.declarative import declarative_base
 #import TEST
 
 user = os.environ['POSTGRES_USER']
+#user = 'admin'
 pwd = os.environ['POSTGRES_PASSWORD']
+#pwd = ''
 db = os.environ['POSTGRES_DB']
 host = 'db'
+#host = 'localhost'
 port = '5432'
-engine = create_engine('postgres://%s:%s@%s:%s/%s' % (user, pwd, host, port, db)) 
+engine = create_engine('postgresql://%s:%s@%s:%s/%s' % (user, pwd, host, port, db)) 
 
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,

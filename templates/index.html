@@ -3,7 +3,8 @@
     <body>
         <h1> Welcome! </h1>
         <h2> Please enter items that you would like to sell? </h2>
-        <form method="POST" action="/">
+        <!-- <form method="POST" action="/">  -->
+        <form method="POST" enctype="multipart/form-data" action="/">
             {{ form.csrf_token }}
             {{ form.name.label }} {{ form.name(size=20) }}
             {{ form.quantity.label }} {{ form.quantity(size=4) }}

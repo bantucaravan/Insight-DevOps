@@ -1,10 +1,12 @@
 import datetime
 import os
+import json
 
 from flask import Flask, render_template, redirect, url_for
 from forms import ItemForm
 from models import Items
 from database import db_session
+import pandas as pd
 
 #import TEST
 
@@ -24,12 +26,23 @@ def add_item():
 @app.route('/success')
 def success():
     results = []
- 
+    
     qry = db_session.query(Items)
+    #qry = Items.query
     results = qry.all()
+    #results = str(results).replace('<', '&lt;')
+    #results = results.replace('>', '&gt;')
+    results = {i : json.loads(str(rep)) for i, rep in enumerate(results)}
+    results = pd.read_json(json.dumps(results), orient= 'index').to_html()
 
-    return str(results)
-  
+    return results
+    #return str(results) #+ str(len(results))
+    #return print(str(results) + str(len(results))) # debug only
+
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    db_session.remove()
+
 
 if __name__ == '__main__':
     #app.run(host='0.0.0.0')
