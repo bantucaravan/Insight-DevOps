@@ -2,13 +2,19 @@
 
 See [this doc](</Original Instructions.md>) for rules and instructions of this puzzle challenge.
 
-I am happy to say, I *completed the puzzle!* Feel free to clone this repo and run the server locally using the following command:
+I am happy to say, I *completed the puzzle!* 
+
+### About
+This repo contains code to create and run locally a Docker containerized webapp server. The simple web app includes several form input fields that can be filled out. Press the submit button and the data is saved in a  SQL server. The user is then shown a page that displays all previous entries currently saved in the SQL server.
+
+### Use
+Feel free to clone this repo and run the server locally using the following bash command:
 
 ```
 docker-compose up -d db; docker-compose run --rm flaskapp /bin/bash -c "cd /opt/services/flaskapp/src && python -c  'import database; database.init_db()'"; docker-compose up -d
 ```
 
-The working page should be accessible at `http://localhost:8080/`
+The working web app page should be accessible at `http://localhost:8080/`
 
 Shutdown the server using the following:
 
